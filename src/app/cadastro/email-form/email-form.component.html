@@ -1,0 +1,35 @@
+<h1 class="mt-4">CADASTRO DE EMAIL <i class="fa fa-inbox"></i></h1>
+<ol class="breadcrumb mb-4">
+      <li class="breadcrumb-item active">Tela para inclusão/atualização de e-mails para recebimento de notificações</li>
+</ol>
+<div class="container">
+      <form #cadastroEmailForm="ngForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+                  <div class="col-md-12">
+                        <div class="alert alert-success" role="alert" *ngIf="success==true">
+                              Email inserido com sucesso!
+                        </div>
+                        <div class="alert alert-danger" role="alert" *ngFor="let erro of errors">
+                              {{ erro }}
+                        </div>
+                  </div>
+            </div>
+
+            <div class="row">
+                  <div class="col-md-6">
+                        <div class="form-group">
+                              <label>Endereço de email: *</label>
+                              <input type="text" class="form-control col-sm-8" [(ngModel)]="cadastroEmail.endereco" name="endereco" />
+                        </div>
+                  </div>
+            </div>
+
+            <div class="row">
+                  <div class="col-md-3">
+                        <button type="submit" class="btn btn-success">
+                              <i class="fa fa-save"></i> GRAVAR
+                        </button>
+                  </div>
+            </div>
+      </form>
+</div>

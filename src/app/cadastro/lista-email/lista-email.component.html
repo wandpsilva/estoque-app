@@ -1,0 +1,61 @@
+<h1 class="mt-4">CONSULTA DE EMAIL <i class="fa fa-envelope-open-text"></i></h1>
+<ol class="breadcrumb mb-4">
+      <li class="breadcrumb-item active">Tela para consulta de emails cadastrados para recebimento de notificações!</li>
+</ol>
+<div class="container">
+      <div class="row">
+            <div class="col-md-12">
+                  <div class="alert alert-success" role="alert" *ngIf="msgSucesso">
+                        {{ msgSucesso }}
+                  </div>
+                  <div class="alert alert-danger" role="alert" *ngIf="msgErro">
+                        {{ msgErro }}
+                  </div>
+            </div>
+      </div>
+      <div class="row">
+            <div class="col-md-2">
+                  <button class="btn btn-warning" (click)="novoEmail()"><i class="fa fa-plus"></i> NOVO</button>
+            </div>
+      </div>
+      <br />
+      <div class="row">
+            <div class="col-md-12">
+                  <table class="table table-condensed table-hover">
+                        <thead>
+                              <tr>
+                                    <th>Email</th>
+                                    <th>Incluso em</th>
+                        </thead>
+                        <tbody>
+                              <tr *ngFor="let emailItem of listaEmail">
+                                    <td>{{ emailItem.endereco }}</td>
+                                    <td>{{ emailItem.dataInclusao }}</td>
+                                    <td>
+                                          <button class="btn btn-danger ml-2" data-toggle="modal" data-target="#modalDelecaoEmail" (click)="prepararDelecao(emailItem)">
+                                                <i class="fa fa-trash"></i>
+                                          </button>
+                                    </td>
+                              </tr>
+                        </tbody>
+                  </table>
+            </div>
+      </div>
+
+      <div id="modalDelecaoEmail" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                  <div class="modal-content">
+                        <div class="modal-header">
+                              <h4>TEM CERTEZA?!</h4>
+                        </div>
+                        <div class="modal-body" *ngIf="emailSelecionado">
+                              Confirmar a deleção do endereço: <b>{{ emailSelecionado.endereco }}</b>?
+                        </div>
+                        <div class="modal-footer">
+                              <button class="btn btn-danger" (click)="deletarEmail()" data-dismiss="modal">SIM</button>
+                              <button class="btn btn-default" data-dismiss="modal">NÃO</button>
+                        </div>
+                  </div>
+            </div>
+      </div>
+</div>

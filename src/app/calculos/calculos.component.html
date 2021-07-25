@@ -1,0 +1,48 @@
+<h1 class="mt-4">CALCULOS</h1>
+<ol class="breadcrumb mb-4">
+      <li class="breadcrumb-item active">Página para auxilio em cálculos básicos</li>
+</ol>
+<div>
+      <form #calculoPorcentagemForm="ngForm" (ngSubmit)="calculaPorcentagem()">
+            <div class="row">
+                  <div class="col-md-2">
+                        <div class="form-group">
+                              <label>Quanto é <strong>(%)</strong>:</label>
+                              <input type="number" class="form-control col-md-4" [(ngModel)]="vlrPerc" name="vlrPerc" />
+                              <br />
+                              <label>de:</label>
+                              <input type="number" class="form-control col-md-4" [(ngModel)]="vlrNum" name="vlrNum" />
+                              <br />
+                              <button type="submit" class="btn btn-success" data-toggle="modal" data-target="#modalResultado">
+                                    <i class="fa fa-calculator"></i> CALCULAR
+                              </button>
+                        </div>
+                  </div>
+                  <div class="col-md-2">
+                        <div class="form-group">
+                              <label>Quanto é <strong>(VALOR)</strong>:</label>
+                              <input type="number" class="form-control col-md-4" [(ngModel)]="vlrNum2" name="vlrNum2" />
+                              <br />
+                              <label>de <strong>(%)</strong>:</label>
+                              <input type="number" class="form-control col-md-4" [(ngModel)]="vlrPerc2" name="vlrPerc2" />
+                              <br />
+                              <button type="button" class="btn btn-success" (click)="calculaValor()" data-toggle="modal" data-target="#modalResultado">
+                                    <i class="fa fa-calculator"></i> CALCULAR
+                              </button>
+                        </div>
+                  </div>
+            </div>
+      </form>
+      <div id="modalResultado" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                        <div class="modal-header">
+                              <h5><strong>RESULTADO</strong></h5>
+                        </div>
+                        <div class="modal-body">
+                              {{ resultadoFinal }}
+                        </div>
+                  </div>
+            </div>
+      </div>
+</div>

@@ -1,0 +1,33 @@
+<h1 class="mt-4">CONSULTA DE CEP</h1>
+<ol class="breadcrumb mb-4">
+      <li class="breadcrumb-item active">Aqui você pode consultar o endereço de um determinado CEP</li>
+</ol>
+<div>
+      <form #consultaCepForm="ngForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+                  <div class="col-md-6">
+                        <div class="form-group">
+                              <label>Digite o número do CEP que deseja pesquisar:</label>
+                              <input type="text" class="form-control col-sm-4" [(ngModel)]="codigo" name="codigo" />
+                        </div>
+                  </div>
+            </div>
+            <div class="row">
+                  <div class="col-md-3">
+                        <button type="submit" class="btn btn-warning"  data-toggle="modal" data-target="#modalEndereco"><i class="fa fa-search"></i> PESQUISAR</button>
+                  </div>
+            </div>
+      </form>
+      <div id="modalEndereco" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                        <div class="modal-header">
+                              <h5><strong>ENDEREÇO</strong></h5>
+                        </div>
+                        <div class="modal-body">
+                              {{ retorno }}
+                        </div>
+                  </div>
+            </div>
+      </div>
+</div>

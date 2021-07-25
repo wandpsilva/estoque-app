@@ -1,0 +1,77 @@
+<h1 class="mt-4">CADASTRO <i class="fa fa-pen-alt"></i></h1>
+<ol class="breadcrumb mb-4">
+      <li class="breadcrumb-item active">Tela para inclusão/atualização de itens no estoque!</li>
+</ol>
+<div class="container">
+      <form #cadastroForm="ngForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+                  <div class="col-md-12">
+                        <div class="alert alert-success" role="alert" *ngIf="success==true">
+                              Item inserido com sucesso!
+                        </div>
+                        <div class="alert alert-danger" role="alert" *ngFor="let erro of errors">
+                              {{erro}}
+                        </div>
+                  </div>
+            </div>
+
+            <div class="row" *ngIf="cadastroItem.id">
+                  <div class="col-md-6">
+                        <div class="form-group">
+                              <label>ID:</label>
+                              <input type="text" class="form-control"  [ngModel]="cadastroItem.id" name="id" disabled="true" />
+                        </div>
+                  </div>
+                  <div class="col-md-6" *ngIf="cadastroItem.dataCadastro">
+                        <div class="form-group">
+                              <label>Data de cadastro:</label>
+                              <input type="text" class="form-control" [ngModel]="cadastroItem.dataCadastro" name="dataCadastro" disabled="true" />
+                        </div>
+                  </div>
+            </div>
+
+            <div class="row">
+                  <div class="col-md-6">
+                        <div class="form-group">
+                              <label>Nome: *</label>
+                              <input type="text" class="form-control" [(ngModel)]="cadastroItem.nome" name="nome" />
+                        </div>
+                  </div>
+                  <div class="col-md-6">
+                        <div class="form-group">
+                              <label>Marca:</label>
+                              <input type="text" class="form-control" [(ngModel)]="cadastroItem.marca" name="marca" />
+                        </div>
+                  </div>
+                  <div class="col-md-6">
+                        <div class="form-group">
+                              <label>Quantidade: *</label>
+                              <input type="text" class="form-control" [(ngModel)]="cadastroItem.quantidade" name="quantidade" />
+                        </div>
+                  </div>
+                  <div class="col-md-6">
+                        <div class="form-group">
+                              <label>Quantidade minima: *</label>
+                              <input type="text" class="form-control" [(ngModel)]="cadastroItem.quantidadeMinima" name="quantidadeMinima" />
+                        </div>
+                  </div>
+                  <div class="col-md-6">
+                        <div class="form-group">
+                              <label>Observações:</label>
+                              <input type="text" class="form-control" [(ngModel)]="cadastroItem.observacoes" name="observacoes" />
+                        </div>
+                  </div>
+            </div>
+
+            <div class="row">
+                  <div class="col-md-3">
+                        <button type="submit" class="btn btn-success" *ngIf="!cadastroItem.id">
+                              <i class="fa fa-save"></i> GRAVAR
+                        </button>
+                        <button type="submit" class="btn btn-primary" *ngIf="cadastroItem.id">
+                              <i class="fa fa-sync-alt"></i> ATUALIZAR
+                        </button>
+                  </div>
+            </div>
+      </form>
+</div>
